@@ -14,3 +14,4 @@ WEAVIATE_API_KEY="<>"
 WEAVIATE_URL="<>"
 DATA_CLASSNAME="Document"
 ```
+save the file and exit the vim
