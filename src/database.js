@@ -2,6 +2,7 @@ import weaviate, { ApiKey } from "weaviate-ts-client";
 import { config } from "dotenv";
 
 import { FAKE_XORDIA_HISTORY } from "./data.js";
+import { CLASS_INFO } from "./classinfo.js";
 
 config();
 
@@ -28,8 +29,7 @@ async function migrate(shouldDeleteAllDocuments = false) {
       vectorizer: "text2vec-openai",
       moduleConfig: {
         "text2vec-openai": {
-          model: "ada",
-          modelVersion: "002",
+          model: "text-embedding-3-small",
           type: "text",
         },
       },
@@ -58,6 +58,7 @@ async function migrate(shouldDeleteAllDocuments = false) {
 
     console.info(`Inserting documents`);
     await addDocuments(FAKE_XORDIA_HISTORY);
+    await addDocuments(CLASS_INFO);
   } catch (err) {
     console.error("error >>>", err.message);
   }

@@ -12,6 +12,10 @@ const queryDatabase = async (prompt) => {
     fields: "title text date",
     limit: 50,
   });
+
+  // print the content of questionContext
+  // console.log(questionContext);
+
   const context = questionContext
     .map((context, index) => {
       const { title, text, date } = context;
